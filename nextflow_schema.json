@@ -3,6 +3,7 @@
     "$id": "https://raw.githubusercontent.com/nf-core/nanoseq/master/nextflow_schema.json",
     "title": "nf-core/nanoseq pipeline parameters",
     "description": "A pipeline to demultiplex, QC and map Nanopore data",
+    "demo_url": "https://ont-exd-int-s3-euwst1-epi2me-labs.s3.amazonaws.com/nanoseq/nanoseq-demo.tar.gz",
     "type": "object",
     "definitions": {
         "input_output_options": {
