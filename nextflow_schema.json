@@ -3,6 +3,7 @@
     "$id": "https://raw.githubusercontent.com/nf-core/nanoseq/master/nextflow_schema.json",
     "title": "nf-core/nanoseq pipeline parameters",
     "description": "A pipeline to demultiplex, QC and map Nanopore data",
+    "demo_url": "https://ont-exd-int-s3-euwst1-epi2me-labs.s3.amazonaws.com/nanoseq/nanoseq-demo.tar.gz",
     "type": "object",
     "definitions": {
         "input_output_options": {
@@ -25,11 +26,8 @@
                 },
                 "protocol": {
                     "type": "string",
-                    "description": "Path to comma-separated file containing information about the samples in the experiment.",
-                    "format": "file-path",
-                    "mimetype": "text/csv",
-                    "schema": "assets/schema_input.json",
-                    "help_text": "You will need to create a design file with information about the samples in your experiment before running the pipeline. Use this parameter to specify its location. It has to be a comma-separated file with 3 columns, and a header row. See [usage docs](https://nf-co.re//usage#samplesheet-input)."
+                    "description": "The type of input material used in the experiment.",
+                    "enum": [ "DNA", "cDNA", "directRNA" ]
                 },
                 "outdir": {
                     "type": "string",
@@ -149,17 +147,20 @@
                 "skip_basecalling": {
                     "type": "boolean",
                     "description": "Skip basecalling with Guppy.",
-                    "fa_icon": "fas fa-fast-forward"
+                    "fa_icon": "fas fa-fast-forward",
+                    "default": true
                 },
                 "skip_demultiplexing": {
                     "type": "boolean",
                     "description": "Skip demultiplexing with Guppy/qcat.",
-                    "fa_icon": "fas fa-fast-forward"
+                    "fa_icon": "fas fa-fast-forward",
+                    "default": true
                 },
                 "run_nanolyse": {
                     "type": "boolean",
                     "description": "Filter reads from FastQ files using NanoLyse",
-                    "fa_icon": "fas fa-fast-forward"
+                    "fa_icon": "fas fa-fast-forward",
+                    "default": false
                 },
                 "nanolyse_fasta": {
                     "type": "string",
@@ -246,7 +247,8 @@
                 "skip_sv": {
                     "type": "boolean",
                     "fa_icon": "fas fa-fast-forward",
-                    "description": "Skip structural variant calling."
+                    "description": "Skip structural variant calling.",
+                    "default": true
                 }
             }
         },
@@ -266,12 +268,14 @@
                 "skip_quantification": {
                     "type": "boolean",
                     "fa_icon": "fas fa-fast-forward",
-                    "description": "Skip transcript quantification and differential analysis."
+                    "description": "Skip transcript quantification and differential analysis.",
+                    "default": true
                 },
                 "skip_differential_analysis": {
                     "type": "boolean",
                     "fa_icon": "fas fa-fast-forward",
-                    "description": "Skip differential analysis with DESeq2 and DEXSeq."
+                    "description": "Skip differential analysis with DESeq2 and DEXSeq.",
+                    "default": true
                 }
             }
         },
@@ -290,7 +294,8 @@
                 "skip_fusion_analysis": {
                     "type": "boolean",
                     "fa_icon": "fas fa-fast-forward",
-                    "description": "Skip differential analysis with DESeq2 and DEXSeq."
+                    "description": "Skip differential analysis with DESeq2 and DEXSeq.",
+                    "default": true
                 }
             }
         },
@@ -304,17 +309,20 @@
                 "skip_modification_analysis": {
                     "type": "boolean",
                     "fa_icon": "fas fa-fast-forward",
-                    "description": "Skip RNA modification analysis."
+                    "description": "Skip RNA modification analysis.",
+                    "default": true
                 },
                 "skip_xpore": {
                     "type": "boolean",
                     "fa_icon": "fas fa-fast-forward",
-                    "description": "Skip differential modification analysis with xpore."
+                    "description": "Skip differential modification analysis with xpore.",
+                    "default": true
                 },
                 "skip_m6anet": {
                     "type": "boolean",
                     "fa_icon": "fas fa-fast-forward",
-                    "description": "Skip m6A detection with m6anet."
+                    "description": "Skip m6A detection with m6anet.",
+                    "default": true
                 }
             }
         },
@@ -328,12 +336,14 @@
                 "skip_bigbed": {
                     "type": "boolean",
                     "fa_icon": "fas fa-fast-forward",
-                    "description": "Skip BigBed file generation."
+                    "description": "Skip BigBed file generation.",
+                    "default": true
                 },
                 "skip_bigwig": {
                     "type": "boolean",
                     "fa_icon": "fas fa-fast-forward",
-                    "description": "Skip BigWig file generation."
+                    "description": "Skip BigWig file generation.",
+                    "default": true
                 },
                 "skip_pycoqc": {
                     "type": "boolean",
